@@ -1,16 +1,15 @@
-import './App.css'
+import "./App.css";
+import IntfiniteScroll from "./components/infiniteScroll/intersectionObserverInfiniteScroll";
 
 function App() {
   return (
     <div className="container">
-      <h1>🎯 React Interview Questions</h1>
-      <p className="subtitle">Test your React solutions here</p>
+      <h1>PlayGround</h1>
       <div className="content">
-        {/* Your React component code goes here */}
-        <p>Add your React interview questions and solutions below</p>
+        <IntfiniteScroll />
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
