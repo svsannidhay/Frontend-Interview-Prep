@@ -1,0 +1,3 @@
+import IntersectionObserverInfiniteScroll from "./IntersectionObserverInfiniteScroll";
+
+export default IntersectionObserverInfiniteScroll;
