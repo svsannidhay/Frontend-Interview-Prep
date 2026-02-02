@@ -42,6 +42,35 @@ export default function debounceV2(func, wait) {
 
   return debouncedFunc;
 }
+// Debounced with return value using promises
+export default function debounceWithReturnValue(func, wait) {
+  let timer;
+  let pendingPromiseReject;
+
+  return function (...args) {
+    return new Promise((resolve, reject) => {
+      if (timer) {
+        clearTimeout(timer);
+        pendingPromiseReject?.(
+          new Error('Debounced call cancelled')
+        );
+      }
+
+      pendingPromiseReject = reject;
+
+      timer = setTimeout(() => {
+        try {
+          const result = func.apply(this, args);
+          resolve(result);
+        } catch (err) {
+          reject(err);
+        }
+      }, wait);
+    });
+  };
+}
+
+
 
 // Usage Example
 function loggerToBeDebounced(arg1, arg2) {
