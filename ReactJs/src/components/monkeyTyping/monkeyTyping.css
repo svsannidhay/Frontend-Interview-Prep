@@ -1,0 +1,27 @@
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.char {
+    margin: 2px;
+    padding: 4px 2px;
+    display: inline-block;
+}
+
+.caret {
+  width: 2px;
+  padding: 4px 1px;
+  background: gray;
+  display: inline-block;
+  animation: blink 1s infinite;
+}
+
+.correct {
+    background-color: lightgreen;
+}
+
+.incorrect {
+    background-color: lightpink;
+}   

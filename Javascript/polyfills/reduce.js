@@ -6,25 +6,19 @@ Array.prototype.myReduce = function (callback, initialValue) {
   }
 
   if (typeof callback !== "function") {
-    throw new TypeError(
-      "Array.prototype.myReduce - callback is not a function",
-    );
+    throw new TypeError("Array.prototype.myReduce - callback is not callable");
   }
 
-  let result = initialValue;
-
-  for (let i = 0; i < this.length; i++) {
-    if (i in this) {
-      if (result === undefined) {
-        result = this[i];
-        continue;
-      }
-
-      result = callback(result, this[i], i, this);
-    }
+  if (initialValue === undefined && !this.length) {
+    throw new TypeError("Reduce of empty array with no initial value");
   }
 
-  return result;
+  let acc = initialValue === undefined ? this[0] : initialValue;
+  let start = initialValue === undefined ? 1 : 0;
+  for (let i = start; i < this.length; i++) {
+    if (i in this) acc = callback(acc, this[i], i, this);
+  }
+  return acc;
 };
 
 console.log([1, 2, 3, 4].myReduce((acc, val) => acc + val, 0)); // 10

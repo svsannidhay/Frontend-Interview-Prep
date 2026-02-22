@@ -17,8 +17,6 @@ function Person(name) {
     return 1;
 }
 
-
-
 const p = myNew(Person, 'Alice');
 
 console.log(p); 
